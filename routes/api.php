@@ -16,7 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-//Route::get('/trigger-fetch', 'UpturnsController@index');
-Route::post('/fetch-data', 'UpturnsController@show');
+Route::post('/fetch-data/{order_id}', 'UpturnsController@show');
 Route::get('/my-api-test', 'UpturnsController@create');
+Route::post('/create-label', 'UpturnsController@generateLabel');

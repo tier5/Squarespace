@@ -92,5 +92,46 @@
             </div>
         </div>
     </body>
-    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    function randomId() {
+        var id = null;
+        var idLength = null;
+        var finalId = null;
+        id = "upt"+(Date.now()*(Math.random()*100));
+        idLength = id.length;
+        finalId = id.substr(0,idLength-2).split('.')[0];
+        return finalId;
+    }
+    function urlParam(name) {
+        var results = new RegExp('[\?&]' + name + '=([^]*)').exec(window.location.href);
+        if (results==null){
+           return null;
+        }
+        else{
+           return results[1] || 0;
+        }
+    }
+        $(function(){
+            console.log(randomId());
+            console.log(urlParam('bonethugs'));
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/fetch-data/'+id,
+                type:"POST",
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        });
+    </script>
 </html>
